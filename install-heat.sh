@@ -36,5 +36,5 @@ sudo cat<<EOF >> /etc/hosts
 192.168.20.99 controller
 EOF
 
-
+sudo sed -ir "/^\[DEFAULT\]/a connection = mysql+pymysql://heat:HEAT_DBPASS@controller/heat" /etc/heat/heat.conf
 
