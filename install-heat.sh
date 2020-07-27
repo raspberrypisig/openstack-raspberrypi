@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-set -x
+set -xe
 
-mysql -u root -e "CREATE DATABASE heat;"
-mysql -u root -e "GRANT ALL PRIVILEGES ON heat.* TO 'heat'@'localhost' IDENTIFIED BY 'password';"
-mysql -u root -e "GRANT ALL PRIVILEGES ON heat.* TO 'heat'@'%' IDENTIFIED BY 'password';"
+echo "CREATE DATABASE heat;" | sudo mysql -u root
+echo "GRANT ALL PRIVILEGES ON heat.* TO 'heat'@'localhost' IDENTIFIED BY 'password';" | sudo mysql -u root
+echo "GRANT ALL PRIVILEGES ON heat.* TO 'heat'@'%' IDENTIFIED BY 'password';" | sudo mysql -u root
 
 openstack user create --domain default --password-prompt heat
 openstack role add --project service --user heat admin
