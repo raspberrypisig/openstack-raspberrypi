@@ -37,7 +37,27 @@ sudo -s 'echo 192.168.20.99 controller' >> /etc/hosts
 sudo sed -ir "/^\[database\]/a connection = mysql+pymysql://heat:password@controller/heat" /etc/heat/heat.conf
 sudo sed -ir "/^\[DEFAULT\]/a transport_url = rabbit://openstack:password@controller" /etc/heat/heat.conf
 
+cat<<EOF > /tmp/heatsnippet.conf
+auth_uri = http://controller:5000
+auth_url = http://controller:35357
+memcached_servers = controller:11211
+auth_type = password
+project_domain_name = default
+user_domain_name = default
+project_name = service
+username = heat
+password = password
 
+[trustee]
+auth_type = password
+auth_url = http://controller:35357
+username = heat
+password = password
+user_domain_name = default
+
+[clients_keystone]
+auth_uri = http://controller:5000
+EOF
 
 
 
