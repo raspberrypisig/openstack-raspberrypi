@@ -30,5 +30,5 @@ openstack role create heat_stack_owner
 openstack role add --project admin --user admin heat_stack_owner
 openstack role create heat_stack_user
 
-apt-get install -y heat-api heat-api-cfn heat-engine heat-dashboard
+sudo apt-get install -y heat-api heat-api-cfn heat-engine python3-heat-dashboard
 
