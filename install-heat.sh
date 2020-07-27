@@ -32,9 +32,8 @@ openstack role create heat_stack_user
 
 sudo apt-get install -y heat-api heat-api-cfn heat-engine python3-heat-dashboard
 
-sudo cat<<EOF >> /etc/hosts
-192.168.20.99 controller
-EOF
 
-sudo sed -ir "/^\[DEFAULT\]/a connection = mysql+pymysql://heat:HEAT_DBPASS@controller/heat" /etc/heat/heat.conf
+sudo -s 'echo 192.168.20.99 controller' >> /etc/hosts
+
+sudo sed -ir "/^\[DEFAULT\]/a connection = mysql+pymysql://heat:password@controller/heat" /etc/heat/heat.conf
 
