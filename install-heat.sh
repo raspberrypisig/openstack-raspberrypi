@@ -6,7 +6,7 @@ echo "CREATE DATABASE heat;" | sudo mysql -u root
 echo "GRANT ALL PRIVILEGES ON heat.* TO 'heat'@'localhost' IDENTIFIED BY 'password';" | sudo mysql -u root
 echo "GRANT ALL PRIVILEGES ON heat.* TO 'heat'@'%' IDENTIFIED BY 'password';" | sudo mysql -u root
 
-openstack user create --domain default --password-prompt heat
+openstack user create --domain default --password password heat
 openstack role add --project service --user heat admin
 openstack service create --name heat --description "Orchestration" orchestration
 openstack service create --name heat-cfn --description "Orchestration"  cloudformation
