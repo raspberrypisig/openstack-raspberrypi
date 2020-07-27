@@ -11,6 +11,7 @@ sudo snap install microstack --classic --beta
 sudo microstack.init
 # Answer yes to clustering, role is control
 sudo snap alias microstack.openstack openstack
+sudo snap alias microstack.mysql mysql
 # https://docs.openstack.org/ocata/user-guide/cli-cheat-sheet.html
 openstack catalog list
 openstack network list
