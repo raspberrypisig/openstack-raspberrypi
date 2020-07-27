@@ -32,3 +32,9 @@ openstack role create heat_stack_user
 
 sudo apt-get install -y heat-api heat-api-cfn heat-engine python3-heat-dashboard
 
+sudo cat<<EOF >> /etc/hosts
+192.168.20.99 controller
+EOF
+
+
+
