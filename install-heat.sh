@@ -34,6 +34,10 @@ sudo apt-get install -y heat-api heat-api-cfn heat-engine python3-heat-dashboard
 
 
 sudo -s 'echo 192.168.20.99 controller' >> /etc/hosts
+sudo sed -ir "/^\[database\]/a connection = mysql+pymysql://heat:password@controller/heat" /etc/heat/heat.conf
 
-sudo sed -ir "/^\[DEFAULT\]/a connection = mysql+pymysql://heat:password@controller/heat" /etc/heat/heat.conf
+
+
+
+
 
