@@ -60,4 +60,7 @@ auth_uri = http://controller:5000
 EOF
 
 
+sudo microstack.rabbitmq-plugins enable rabbitmq_management  
+
+
 
