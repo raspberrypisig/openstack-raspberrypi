@@ -19,7 +19,7 @@ openstack endpoint create --region microstack cloudformation public http://contr
 openstack endpoint create --region microstack cloudformation internal http://controller:8000/v1
 openstack endpoint create --region microstack cloudformation admin http://controller:8000/v1
 
-openstack domain create --description "Stack projects and users" heat
+openstack domain create heat
 openstack user create --domain heat --password password heat_domain_admin
 openstack role add --domain heat --user-domain heat --user heat_domain_admin admin
 
