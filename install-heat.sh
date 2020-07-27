@@ -19,5 +19,14 @@ openstack endpoint create --region microstack cloudformation public http://contr
 openstack endpoint create --region microstack cloudformation internal http://controller:8000/v1
 openstack endpoint create --region microstack cloudformation admin http://controller:8000/v1
 
+openstack domain create --description "Stack projects and users" heat
+openstack user create --domain heat --password-prompt heat_domain_admin
+openstack role add --domain heat --user-domain heat --user heat_domain_admin admin
 
+openstack role create heat_stack_owner
+#This one falls apart
+openstack role add --project demo --user demo heat_stack_owner
+openstack role create heat_stack_user
+
+apt-get install -y heat-api heat-api-cfn heat-engine heat-dashboard
 
