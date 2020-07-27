@@ -13,4 +13,5 @@ sudo microstack.init
 sudo snap alias microstack.openstack openstack
 # https://docs.openstack.org/ocata/user-guide/cli-cheat-sheet.html
 openstack catalog list
+openstack network list
 ```
