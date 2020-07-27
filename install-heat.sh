@@ -24,8 +24,10 @@ openstack user create --domain heat --password password heat_domain_admin
 openstack role add --domain heat --user-domain heat --user heat_domain_admin admin
 
 openstack role create heat_stack_owner
-#This one falls apart
-openstack role add --project demo --user demo heat_stack_owner
+# This one falls apart
+# Probably need to add user called demo and a project called demo (whatever a project is)
+# openstack role add --project demo --user demo heat_stack_owner
+openstack role add --project admin --user admin heat_stack_owner
 openstack role create heat_stack_user
 
 apt-get install -y heat-api heat-api-cfn heat-engine heat-dashboard
