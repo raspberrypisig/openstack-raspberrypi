@@ -10,4 +10,4 @@ character-set-server = utf8
 EOF
 
 service mysql restart
-mysql_secure_installation
+# mysql_secure_installation
