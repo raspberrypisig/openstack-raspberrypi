@@ -1,18 +1,3 @@
 # openstack-raspberrypi
 
-Tested on Raspberry Pi 4 4GB
-
-Install control plane and data plane on separate Pi 4s using microstack
-
-control plane
-
-```sh
-sudo snap install microstack --classic --beta
-sudo microstack.init
-# Answer yes to clustering, role is control
-sudo snap alias microstack.openstack openstack
-sudo snap alias microstack.mysql mysql
-# https://docs.openstack.org/ocata/user-guide/cli-cheat-sheet.html
-openstack catalog list
-openstack network list
-```
+Testing on Raspberry Pi 4 4GB with a 8GB swap file (installing controller node)
