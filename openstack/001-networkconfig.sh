@@ -23,11 +23,10 @@ IgnoreOnIsolate=true
 [Service]
 Type=dbus
 BusName=fi.w1.wpa_supplicant1
-ExecStart=/sbin/wpa_supplicant -u -s -O /run/wpa_supplicant
+ExecStart=/sbin/wpa_supplicant -u -s -c /etc/wpa_supplicant.conf -i wlan0
 
 [Install]
 WantedBy=multi-user.target
-Alias=dbus-fi.w1.wpa_supplicant1.service
 EOF
 
 cat<<EOF > /etc/systemd/network/20-dhclient.network
