@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-cat<<EOF |
+cat <<EOF | 
 openssh-server
-EOF 
+EOF
 
 while read line
 do
