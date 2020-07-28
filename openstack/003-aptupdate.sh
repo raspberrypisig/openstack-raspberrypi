@@ -3,5 +3,5 @@
 apt-mark hold `uname -r`
 apt-mark hold linux-firmware
 apt update
-apt -y upgrade
+apt -y update
 
