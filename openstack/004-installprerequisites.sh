@@ -3,12 +3,12 @@
 cat <<EOF | 
 openssh-server
 chrony
-python-openstackclient
+python3-openstackclient
 mariadb-server 
-python-pymysql
+python3-pymysql
 rabbitmq-server
 memcached 
-python-memcache
+python3-memcache
 etcd
 EOF
 
