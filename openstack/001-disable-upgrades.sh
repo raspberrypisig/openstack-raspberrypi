@@ -7,5 +7,4 @@ APT::Periodic::AutocleanInterval "0";
 APT::Periodic::Unattended-Upgrade "0";
 EOF
 
-apt update
-apt remove --purge unattended-upgrades
+apt remove -y --purge unattended-upgrades
