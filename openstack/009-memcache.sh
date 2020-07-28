@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
-# /etc/memcached.conf
-# replace -l 127.0.0.1 with -l 10.0.0.11
-# service memcached restart
+sed -i 's/127\.0\.0\.1/192\.168\.20\.99/' /etc/memcached.conf
+service memcached restart
+
+
