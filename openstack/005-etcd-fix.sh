@@ -4,7 +4,7 @@ echo "ETCD_UNSUPPORTED_ARCH=arm64" >> /etc/default/etcd
 ETCD_UNSUPPORTED_ARCH=arm64 apt install -f
 
 #  /etc/default/etcd
-cat<<EOF
+cat<<EOF >> /etc/default/etcd
 ETCD_NAME="controller"
 ETCD_DATA_DIR="/var/lib/etcd"
 ETCD_INITIAL_CLUSTER_STATE="new"
@@ -16,5 +16,6 @@ ETCD_LISTEN_PEER_URLS="http://0.0.0.0:2380"
 ETCD_LISTEN_CLIENT_URLS="http://10.0.0.11:2379"
 EOF
 
-# systemctl enable etcd
-# systemctl restart etcd
+systemctl restart etcd
+systemctl enable etcd
+
