@@ -37,4 +37,14 @@ Name=wlan0
 DHCP=ipv4
 EOF
 
+systemctl daemon-reload
+systemctl restart wpa_supplicant
+systemctl restart systemd-networkd
+
+sleep 10
+
+
+
+
+
 
