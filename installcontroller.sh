@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# All passwords are: password
+. ./set_env_vars.sh
 
 for script in `ls openstack-controller/*.sh`
 do
