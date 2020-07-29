@@ -18,6 +18,7 @@ export NEUTRON_PASS=password
 export NOVA_DBPASS=password
 export NOVA_PASS=password
 export PLACEMENT_PASS=password
+export PLACEMENT_DBPASS=password
 export RABBIT_PASS=password
 
 # setup
