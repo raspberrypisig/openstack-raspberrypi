@@ -9,9 +9,9 @@ GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'%' IDENTIFIED BY '$KEYSTONE_DB
 EOF
 
 apt install -y keystone
-sed -i '/\[database\]/{N;s/\n/\n#/}' /etc/keystone/keystone.conf
-sed -i  "/\[database\]/a connection = mysql+pymysql://keystone:$KEYSTONE_DBPASS@controller/keystone" /etc/keystone/keystone.conf
-sed -i  '/\[token\]/a provider = fernet' /etc/keystone/keystone.conf
+sed -i '/^\[database\]/{N;s/\n/\n#/}' /etc/keystone/keystone.conf
+sed -i  "^/\[database\]/a connection = mysql+pymysql://keystone:$KEYSTONE_DBPASS@controller/keystone" /etc/keystone/keystone.conf
+sed -i  '/^\[token\]/a provider = fernet' /etc/keystone/keystone.conf
 su -s /bin/sh -c "keystone-manage db_sync" keystone
 
 keystone-manage fernet_setup --keystone-user keystone --keystone-group keystone
