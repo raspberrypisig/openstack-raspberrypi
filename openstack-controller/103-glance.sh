@@ -33,3 +33,5 @@ username = glance\n\
 password = $GLANCE_PASS\
 " /etc/glance/glance-api.conf
 
+sed -i '/^\[paste_deploy\]/a flavor = keystone' /etc/glance/glance-api.conf
+
