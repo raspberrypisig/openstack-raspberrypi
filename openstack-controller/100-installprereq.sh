@@ -16,7 +16,11 @@ neutron-linuxbridge-agent
 neutron-l3-agent 
 neutron-dhcp-agent 
 neutron-metadata-agent 
-python3-neutronclient 
+python3-neutronclient
+heat-api 
+heat-api-cfn 
+heat-engine 
+python3-heat-dashboard
 EOF
 
 while read line
