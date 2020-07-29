@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -x
+
 mysql <<EOF
 CREATE DATABASE glance;
 GRANT ALL PRIVILEGES ON glance.* TO 'glance'@'localhost' IDENTIFIED BY '$GLANCE_DBPASS';
@@ -15,4 +17,7 @@ openstack endpoint create --region RegionOne image internal http://controller:92
 openstack endpoint create --region RegionOne image admin http://controller:9292
 
 apt install -y glance
+
+sed -i "/\[database\]/a connection = mysql+pymysql://glance:$GLANCE_DBPASS@controller/glance" /etc/glance/glance-api.conf
+
 
