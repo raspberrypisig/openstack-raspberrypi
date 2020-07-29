@@ -21,6 +21,8 @@ keystone-manage bootstrap --bootstrap-password $ADMIN_PASS \
   --bootstrap-public-url http://controller:5000/v3/ \
   --bootstrap-region-id RegionOne
   
+echo ServerName controller >> /etc/apache2/apache.conf
+  
 
 
 
