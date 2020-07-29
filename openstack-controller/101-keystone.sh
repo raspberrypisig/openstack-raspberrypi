@@ -25,7 +25,7 @@ echo ServerName controller >> /etc/apache2/apache.conf
 
 service apache2 restart
 
-cat<<EOF > /root/admin.rc
+cat<<EOF > /root/admin-openrc
 export OS_PROJECT_DOMAIN_NAME=Default
 export OS_USER_DOMAIN_NAME=Default
 export OS_PROJECT_NAME=admin
@@ -36,7 +36,7 @@ export OS_IDENTITY_API_VERSION=3
 export OS_IMAGE_API_VERSION=2
 EOF
   
-cat<<EOF > /home/ubuntu/demo.rc
+cat<<EOF > /home/ubuntu/demo-openrc
 export OS_PROJECT_DOMAIN_NAME=Default
 export OS_USER_DOMAIN_NAME=Default
 export OS_PROJECT_NAME=myproject
