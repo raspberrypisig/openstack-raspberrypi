@@ -20,6 +20,9 @@ export NOVA_PASS=password
 export PLACEMENT_PASS=password
 export RABBIT_PASS=password
 
+# setup
+export SERVICE_PROJECT=service
+export DEMO_PROJECT=demo
 
 # IPs
 export CONTROLLER_MANAGEMENT_IP=192.168.20.99
