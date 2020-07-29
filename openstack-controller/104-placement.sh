@@ -33,6 +33,5 @@ username = placement\n\
 password = PLACEMENT_PASS\
 " /etc/placement/placement.conf
 
-
-service apache2 restart
 su -s /bin/sh -c "placement-manage db sync" placement
+service apache2 restart
