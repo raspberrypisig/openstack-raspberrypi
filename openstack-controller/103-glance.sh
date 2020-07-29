@@ -18,6 +18,7 @@ openstack endpoint create --region RegionOne image admin http://controller:9292
 
 apt install -y glance
 
+sed -i '/\[database\]/{N;s/\n/\n#/}' /etc/glance/glance-api.conf
 sed -i "/\[database\]/a connection = mysql+pymysql://glance:$GLANCE_DBPASS@controller/glance" /etc/glance/glance-api.conf
 
 
