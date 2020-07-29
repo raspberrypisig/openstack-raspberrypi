@@ -22,7 +22,28 @@ openstack endpoint create --region RegionOne compute admin http://controller:877
 
 apt install -y nova-api nova-conductor nova-novncproxy nova-scheduler
 
+# missing extra ones here
 
+sed -i "//a \
+region_name = RegionOne\n\
+project_domain_name = Default\n\
+project_name = service\n\
+auth_type = password\n\
+user_domain_name = Default\n\
+auth_url = http://controller:5000/v3\n\
+username = placement\n\
+password = $PLACEMENT_PASS\
+" /etc/nova/nova.conf
+
+su -s /bin/sh -c "nova-manage api_db sync" nova
+su -s /bin/sh -c "nova-manage cell_v2 map_cell0" nova
+su -s /bin/sh -c "nova-manage cell_v2 create_cell --name=cell1 --verbose" nova
+su -s /bin/sh -c "nova-manage db sync" nova
+
+service nova-api restart
+service nova-scheduler restart
+service nova-conductor restart
+service nova-novncproxy restart
 
 
 
