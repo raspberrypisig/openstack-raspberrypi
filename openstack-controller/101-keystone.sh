@@ -7,4 +7,7 @@ GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'%' IDENTIFIED BY '$KEYSTONE_DB
 EOF
 
 apt install -y keystone
+sed -i '/\[database\]/{N;s/\n/\n#/}' /etc/keystone/keystone.conf
+sed -i  "/\[database\]/a connection = mysql+pymysql://keystone:$KEYSTONE_DBPASS@controller/keystone" /etc/keystone/keystone.conf
+
 
