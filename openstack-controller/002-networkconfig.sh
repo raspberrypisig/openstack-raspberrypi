@@ -4,7 +4,7 @@ set -x
 
 SSID=mycrib
 PSK=peachspeak38
-CONTROLLER=192.168.20.99
+CONTROLLER="$CONTROLLER_MANAGEMENT_IP"
 
 cat<<EOF >> /etc/hosts
 $CONTROLLER controller
