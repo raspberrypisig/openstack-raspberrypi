@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -x
+
 
 mysql <<EOF
 CREATE DATABASE placement;
