@@ -4,5 +4,5 @@
 
 for script in `ls openstack-controller/*.sh`
 do
-bash $script
+  bash $script
 done
