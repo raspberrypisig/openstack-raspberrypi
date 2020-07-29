@@ -23,6 +23,7 @@ export RABBIT_PASS=password
 # setup
 export SERVICE_PROJECT=service
 export DEMO_PROJECT=demo
+export DEMO_ROLE=demo
 
 # IPs
 export CONTROLLER_MANAGEMENT_IP=192.168.20.99
