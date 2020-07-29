@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -x
+
 mysql <<EOF
 CREATE DATABASE placement;
 GRANT ALL PRIVILEGES ON placement.* TO 'placement'@'localhost' IDENTIFIED BY '$PLACEMENT_DBPASS';
