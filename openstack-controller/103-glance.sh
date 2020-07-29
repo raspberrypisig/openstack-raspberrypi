@@ -35,3 +35,12 @@ password = $GLANCE_PASS\
 
 sed -i '/^\[paste_deploy\]/a flavor = keystone' /etc/glance/glance-api.conf
 
+sed -i "/^\[glance_store\]/a \
+stores = file,http\n\
+default_store = file\n\
+filesystem_store_datadir = /var/lib/glance/images/\
+" /etc/glance/glance-api.conf
+
+
+
+
