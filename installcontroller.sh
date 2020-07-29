@@ -2,7 +2,7 @@
 
 # All passwords are: password
 
-for script in `ls openstack/*.sh`
+for script in `ls openstack-controller/*.sh`
 do
 bash $script
 done
