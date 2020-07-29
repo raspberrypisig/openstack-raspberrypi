@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-. admin-openrc
+. ./admin-openrc
+. ./set_env_vars.sh
+
 unset OS_AUTH_URL OS_PASSWORD
 openstack --os-auth-url http://controller:5000/v3 \
   --os-project-domain-name Default --os-user-domain-name Default \
