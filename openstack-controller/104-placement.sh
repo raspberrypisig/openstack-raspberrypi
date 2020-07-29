@@ -17,7 +17,8 @@ openstack endpoint create --region RegionOne placement admin http://controller:8
 apt install -y placement-api
 
 sed -i '/^\[placement_database\]/{N;s/\n/\n#/}' /etc/placement/placement.conf
-sed -i "/^\[placement_database\]/a connection = mysql+pymysql://glance:$GLANCE_DBPASS@controller/glance" /etc/placement/placement.conf
+sed -i "/^\[placement_database\]/a connection = mysql+pymysql://placement:$PLACEMENT_DBPASS@controller/placement" /etc/placement/placement.conf
+sed -i '/^\[api\]/a auth_strategy = keystone' /etc/placement/placement.conf
 
 
 
