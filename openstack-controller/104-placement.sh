@@ -20,7 +20,16 @@ sed -i '/^\[placement_database\]/{N;s/\n/\n#/}' /etc/placement/placement.conf
 sed -i "/^\[placement_database\]/a connection = mysql+pymysql://placement:$PLACEMENT_DBPASS@controller/placement" /etc/placement/placement.conf
 sed -i '/^\[api\]/a auth_strategy = keystone' /etc/placement/placement.conf
 
-
+sed -i "/^\[keystone_authtoken\]/a \
+auth_url = http://controller:5000/v3\n\
+memcached_servers = controller:11211\n\
+auth_type = password\n\
+project_domain_name = Default\n\
+user_domain_name = Default\n\
+project_name = service\n\
+username = placement\n\
+password = PLACEMENT_PASS\
+" /etc/placement/placement.conf
 
 
 service apache2 restart
