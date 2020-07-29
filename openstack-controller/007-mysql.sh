@@ -4,7 +4,7 @@ mkdir -p  /etc/mysql/mariadb.conf.d
 
 cat<<EOF > /etc/mysql/mariadb.conf.d/99-openstack.cnf
 [mysqld]
-bind-address = 192.168.20.99
+bind-address = $CONTROLLER_MANAGEMENT_IP
 
 default-storage-engine = innodb
 innodb_file_per_table = on
