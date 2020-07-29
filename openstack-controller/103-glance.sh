@@ -41,6 +41,8 @@ default_store = file\n\
 filesystem_store_datadir = /var/lib/glance/images/\
 " /etc/glance/glance-api.conf
 
+su -s /bin/sh -c "glance-manage db_sync" glance
+service glance-api restart
 
 
 
