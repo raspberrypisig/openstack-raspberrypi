@@ -21,7 +21,7 @@ apt install -y glance
 sed -i '/^\[database\]/{N;s/\n/\n#/}' /etc/glance/glance-api.conf
 sed -i "/^\[database\]/a connection = mysql+pymysql://glance:$GLANCE_DBPASS@controller/glance" /etc/glance/glance-api.conf
 
-sed "/^\[database\]/a \
+sed -i "/^\[keystone_authtoken\]/a \
 www_authenticate_uri = http://controller:5000\n\
 auth_url = http://controller:5000\n\
 memcached_servers = controller:11211\n\
