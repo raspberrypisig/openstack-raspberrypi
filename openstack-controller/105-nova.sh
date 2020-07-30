@@ -52,7 +52,11 @@ server_listen = $my_ip\n\
 server_proxyclient_address = $my_ip\
 " /etc/nova/nova.conf
 
-sed -i "//a \
+sed -i "/^\[glance\]/a api_servers = http://controller:9292" /etc/nova/nova.conf
+sed -i "/^\[oslo_concurrency\]/a lock_path = /var/lib/nova/tmp" /etc/nova/nova.conf
+sed -i "0,/log_dir/s/log_dir/#log_dir" /etc/nova/nova.conf
+
+sed -i "/^\[placement\]/a \
 region_name = RegionOne\n\
 project_domain_name = Default\n\
 project_name = service\n\
