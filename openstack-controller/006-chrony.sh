@@ -4,5 +4,5 @@
 
 cat<<EOF >> /etc/chrony/chrony.conf
 allow $CONTROLLER_MANANGEMENT_CIDR
-allow CONTROLLER_PROVIDER_CIDR
+allow $CONTROLLER_PROVIDER_CIDR
 EOF
