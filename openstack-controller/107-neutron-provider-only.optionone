@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+apt install -y  neutron-server neutron-plugin-ml2 \
+  neutron-linuxbridge-agent neutron-dhcp-agent \
+  neutron-metadata-agent
+  
+sed -i '/^\[database\]/{N;s/\n/\n#/}' /etc/neutron/neutron.conf
+sed -i  "/^\[database\]/a connection = mysql+pymysql://neutron:$NEUTRON_DBPASS@controller/neutron" /etc/neutron/neutron.conf
+
+sed -i "/^\[DEFAULT\]/a \
+core_plugin = ml2\n\
+service_plugins =\n\
+transport_url = rabbit://openstack:$RABBIT_PASS@controller\n\
+auth_strategy = keystone\
+" /etc/neutron/neutron.conf
