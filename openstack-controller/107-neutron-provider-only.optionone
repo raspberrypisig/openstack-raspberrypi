@@ -16,6 +16,17 @@ notify_nova_on_port_status_changes = true\n\
 notify_nova_on_port_data_changes = true\
 " /etc/neutron/neutron.conf
 
+sed -i "/^\[NOVA\]/a \
+auth_url = http://controller:5000\n\
+auth_type = password\n\
+project_domain_name = default\n\
+user_domain_name = default\n\
+region_name = RegionOne\n\
+project_name = service\n\
+username = nova\n\
+password = $NOVA_PASS\
+" /etc/neutron/neutron.conf
+
 sed -i "/^\[keystone_authtoken\]/a \
 www_authenticate_uri = http://controller:5000\n\
 auth_url = http://controller:5000\n\
