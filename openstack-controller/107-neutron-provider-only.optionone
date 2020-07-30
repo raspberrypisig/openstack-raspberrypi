@@ -39,3 +39,9 @@ username = neutron\n\
 password = $NEUTRON_PASS\
 " /etc/neutron/neutron.conf
 
+sed -i  "/^\[oslo_concurrency\]/a lock_path = /var/lib/neutron/tmp" /etc/neutron/neutron.conf
+
+
+
+
+
