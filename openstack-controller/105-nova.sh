@@ -48,7 +48,7 @@ sed -i  "/^\[DEFAULT\]/a my_ip = $CONTROLLER_MANAGEMENT_IP" /etc/nova/nova.conf
 
 sed -i "/^\[vnc\]/a \
 enabled = true\n\
-server_listen = $CONTROLLER_MANAGEMENT_IP\n\
+server_listen = 0.0.0.0\n\
 server_proxyclient_address = $CONTROLLER_MANAGEMENT_IP\
 " /etc/nova/nova.conf
 
