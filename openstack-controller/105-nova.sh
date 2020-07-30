@@ -46,6 +46,11 @@ password = NOVA_PASS\
 
 sed -i  "/^\[DEFAULT\]/a my_ip = $CONTROLLER_MANAGEMENT_IP" /etc/nova/nova.conf
 
+sed -i "/^\[vnc\]/a \
+enabled = true\n\
+server_listen = $my_ip\n\
+server_proxyclient_address = $my_ip\
+" /etc/nova/nova.conf
 
 sed -i "//a \
 region_name = RegionOne\n\
