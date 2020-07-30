@@ -62,6 +62,31 @@ dhcp_driver = neutron.agent.linux.dhcp.Dnsmasq\n\
 enable_isolated_metadata = true\
 "  /etc/neutron/dhcp_agent.ini
 
+openstack network create  --share --external \
+  --provider-physical-network provider \
+  --provider-network-type flat provider
+  
+ openstack subnet create --network provider \
+  --allocation-pool start=$START_IP_ADDRESS,end=$END_IP_ADDRESS \
+  --dns-nameserver $DNS_RESOLVER --gateway $PROVIDER_NETWORK_GATEWAY \
+  --subnet-range $PROVIDER_NETWORK_CIDR provider
+
+openstack subnet create --network provider \
+  --allocation-pool start=203.0.113.101,end=203.0.113.250 \
+  --dns-nameserver 8.8.4.4 --gateway 203.0.113.1 \
+  --subnet-range 203.0.113.0/24 provider
+  
+sed -i  "/^\[securitygroup\]/a nova_metadata_host = controller" /etc/neutron/metadata_agent.ini 
+sed -i  "/^\[securitygroup\]/a metadata_proxy_shared_secret = METADATA_SECRET" /etc/neutron/metadata_agent.ini 
+
+su -s /bin/sh -c "neutron-db-manage --config-file /etc/neutron/neutron.conf \
+  --config-file /etc/neutron/plugins/ml2/ml2_conf.ini upgrade head" neutron
+  
+service nova-api restart
+service neutron-server restart
+service neutron-linuxbridge-agent restart
+service neutron-dhcp-agent restart
+service neutron-metadata-agent restart
 
 
 
