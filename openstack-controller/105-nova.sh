@@ -23,12 +23,12 @@ openstack endpoint create --region RegionOne compute admin http://controller:877
 apt install -y nova-api nova-conductor nova-novncproxy nova-scheduler
 
 sed -i '/^\[api_database\]/{N;s/\n/\n#/}' /etc/nova/nova.conf
-sed -i  "/^\[api_database\]/a connection = mysql+pymysql://nova:NOVA_DBPASS@controller/nova_api" /etc/nova/nova.conf
+sed -i  "/^\[api_database\]/a connection = mysql+pymysql://nova:$NOVA_DBPASS@controller/nova_api" /etc/nova/nova.conf
 
 sed -i '/^\[database\]/{N;s/\n/\n#/}' /etc/nova/nova.conf
-sed -i  "/^\[database\]/a connection = mysql+pymysql://nova:NOVA_DBPASS@controller/nova" /etc/nova/nova.conf
+sed -i  "/^\[database\]/a connection = mysql+pymysql://nova:$NOVA_DBPASS@controller/nova" /etc/nova/nova.conf
 
-sed -i  "/^\[DEFAULT\]/a transport_url = rabbit://openstack:RABBIT_PASS@controller:5672/" /etc/nova/nova.conf
+sed -i  "/^\[DEFAULT\]/a transport_url = rabbit://openstack:$RABBIT_PASS@controller:5672/" /etc/nova/nova.conf
 
 sed -i '/^\[api\]/a auth_strategy = keystone' /etc/nova/nova.conf
 
@@ -41,15 +41,15 @@ project_domain_name = Default\n\
 user_domain_name = Default\n\
 project_name = service\n\
 username = nova\n\
-password = NOVA_PASS\
+password = $NOVA_PASS\
 " /etc/nova/nova.conf
 
 sed -i  "/^\[DEFAULT\]/a my_ip = $CONTROLLER_MANAGEMENT_IP" /etc/nova/nova.conf
 
 sed -i "/^\[vnc\]/a \
 enabled = true\n\
-server_listen = $my_ip\n\
-server_proxyclient_address = $my_ip\
+server_listen = $CONTROLLER_MANAGEMENT_IP\n\
+server_proxyclient_address = $CONTROLLER_MANAGEMENT_IP\
 " /etc/nova/nova.conf
 
 sed -i "/^\[glance\]/a api_servers = http://controller:9292" /etc/nova/nova.conf
