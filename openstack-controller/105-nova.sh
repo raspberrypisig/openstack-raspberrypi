@@ -22,7 +22,12 @@ openstack endpoint create --region RegionOne compute admin http://controller:877
 
 apt install -y nova-api nova-conductor nova-novncproxy nova-scheduler
 
-# missing extra ones here
+sed -i '/^\[api_database\]/{N;s/\n/\n#/}' /etc/nova/nova.conf
+sed -i  "/^\[api_database\]/a connection = mysql+pymysql://nova:NOVA_DBPASS@controller/nova_api" /etc/nova/nova.conf
+
+sed -i '/^\[database\]/{N;s/\n/\n#/}' /etc/nova/nova.conf
+sed -i  "/^\[database\]/a connection = mysql+pymysql://nova:NOVA_DBPASS@controller/nova" /etc/nova/nova.conf
+
 
 sed -i "//a \
 region_name = RegionOne\n\
