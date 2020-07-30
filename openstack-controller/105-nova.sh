@@ -44,6 +44,9 @@ username = nova\n\
 password = NOVA_PASS\
 " /etc/nova/nova.conf
 
+sed -i  "/^\[DEFAULT\]/a my_ip = $CONTROLLER_MANAGEMENT_IP" /etc/nova/nova.conf
+
+
 sed -i "//a \
 region_name = RegionOne\n\
 project_domain_name = Default\n\
