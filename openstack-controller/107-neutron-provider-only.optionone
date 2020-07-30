@@ -56,7 +56,11 @@ sed -i "/^\[vxlan\]/a enable_vxlan = false" /etc/neutron/plugins/ml2/linuxbridge
 sed -i "/^\[securitygroup\]/a firewall_driver = neutron.agent.linux.iptables_firewall.IptablesFirewallDriver" /etc/neutron/plugins/ml2/linuxbridge_agent.ini
 sed -i "/^\[securitygroup\]/a enable_security_group = true" /etc/neutron/plugins/ml2/linuxbridge_agent.ini
 
-
+sed -i  "/^\[DEFAULT\]/a \
+interface_driver = linuxbridge\n\
+dhcp_driver = neutron.agent.linux.dhcp.Dnsmasq\n\
+enable_isolated_metadata = true\
+"  /etc/neutron/dhcp_agent.ini
 
 
 
