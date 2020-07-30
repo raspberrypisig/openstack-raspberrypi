@@ -28,6 +28,8 @@ sed -i  "/^\[api_database\]/a connection = mysql+pymysql://nova:NOVA_DBPASS@cont
 sed -i '/^\[database\]/{N;s/\n/\n#/}' /etc/nova/nova.conf
 sed -i  "/^\[database\]/a connection = mysql+pymysql://nova:NOVA_DBPASS@controller/nova" /etc/nova/nova.conf
 
+sed -i  "/^\[DEFAULT\]/a transport_url = rabbit://openstack:RABBIT_PASS@controller:5672/" /etc/nova/nova.conf
+
 
 sed -i "//a \
 region_name = RegionOne\n\
