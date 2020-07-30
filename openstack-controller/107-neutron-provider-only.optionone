@@ -41,6 +41,18 @@ password = $NEUTRON_PASS\
 
 sed -i  "/^\[oslo_concurrency\]/a lock_path = /var/lib/neutron/tmp" /etc/neutron/neutron.conf
 
+sed -i  "/^\[ml2\]/a \
+type_drivers = flat,vlan\n\
+tenant_network_types =\n\
+mechanism_drivers = linuxbridge\n\
+extension_drivers = port_security\
+"  /etc/neutron/plugins/ml2/ml2_conf.ini
+
+sed -i  "/^\[ml2_type_flat\]/a flat_networks = provider" /etc/neutron/plugins/ml2/ml2_conf.ini
+sed -i  "/^\[securitygroup\]/a enable_ipset = true" /etc/neutron/plugins/ml2/ml2_conf.ini
+
+
+
 
 
 
