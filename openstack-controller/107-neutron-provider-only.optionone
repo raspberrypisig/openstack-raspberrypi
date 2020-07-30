@@ -13,3 +13,16 @@ service_plugins =\n\
 transport_url = rabbit://openstack:$RABBIT_PASS@controller\n\
 auth_strategy = keystone\
 " /etc/neutron/neutron.conf
+
+sed -i "/^\[keystone_authtoken\]/a \
+www_authenticate_uri = http://controller:5000\n\
+auth_url = http://controller:5000\n\
+memcached_servers = controller:11211\n\
+auth_type = password\n\
+project_domain_name = default\n\
+user_domain_name = default\n\
+project_name = service\n\
+username = neutron\n\
+password = $NEUTRON_PASS\
+" /etc/neutron/neutron.conf
+
