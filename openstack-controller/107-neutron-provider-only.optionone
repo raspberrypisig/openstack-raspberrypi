@@ -11,7 +11,9 @@ sed -i "/^\[DEFAULT\]/a \
 core_plugin = ml2\n\
 service_plugins =\n\
 transport_url = rabbit://openstack:$RABBIT_PASS@controller\n\
-auth_strategy = keystone\
+auth_strategy = keystone\n\
+notify_nova_on_port_status_changes = true\n\
+notify_nova_on_port_data_changes = true\
 " /etc/neutron/neutron.conf
 
 sed -i "/^\[keystone_authtoken\]/a \
