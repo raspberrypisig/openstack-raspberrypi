@@ -7,4 +7,6 @@ APT::Periodic::AutocleanInterval "0";
 APT::Periodic::Unattended-Upgrade "0";
 EOF
 
+systemctl stop unattended-upgrades
+systemctl disable unattended-upgrades
 apt remove -y --purge unattended-upgrades
