@@ -24,7 +24,9 @@ server_listen = 0.0.0.0\n\
 server_proxyclient_address = $COMPUTE_MANAGEMENT_IP\n\
 novncproxy_base_url = http://controller:6080/vnc_auto.html\
 " /etc/nova/nova.conf
- 
+
+sed -i "/^\[glance\]/a api_servers = http://controller:9292" /etc/nova/nova.conf
+sed -i "/^\[oslo_concurrency\]/a lock_path = /var/lib/nova/tmp" /etc/nova/nova.conf
 
 sed -i "/^\[libvirt\]/a virt_type = qemu" /etc/nova/nova-compute.conf
 service nova-compute restart
