@@ -15,3 +15,6 @@ project_name = service\n\
 username = nova\n\
 password = $NOVA_PASS\
 " /etc/nova/nova.conf
+
+sed -i "/^\[libvirt\]/a virt_type = qemu" /etc/nova/nova-compute.conf
+service nova-compute restart
