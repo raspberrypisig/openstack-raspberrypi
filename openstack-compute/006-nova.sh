@@ -28,5 +28,16 @@ novncproxy_base_url = http://controller:6080/vnc_auto.html\
 sed -i "/^\[glance\]/a api_servers = http://controller:9292" /etc/nova/nova.conf
 sed -i "/^\[oslo_concurrency\]/a lock_path = /var/lib/nova/tmp" /etc/nova/nova.conf
 
+sed -i "/^\[placement\]/a \
+region_name = RegionOne\n\
+project_domain_name = Default\n\
+project_name = service\n\
+auth_type = password\n\
+user_domain_name = Default\n\
+auth_url = http://controller:5000/v3\n\
+username = placement\n\
+password = $PLACEMENT_PASS\
+" /etc/nova/nova.conf
+
 sed -i "/^\[libvirt\]/a virt_type = qemu" /etc/nova/nova-compute.conf
 service nova-compute restart
