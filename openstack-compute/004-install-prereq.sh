@@ -3,6 +3,7 @@
 cat <<EOF | 
 openssh-server
 chrony
+python3-openstackclient
 EOF
 
 while read line
