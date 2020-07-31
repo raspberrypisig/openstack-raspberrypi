@@ -37,6 +37,6 @@ export COMPUTE_PROVIDER_IP=192.168.20.98
 
 # Networking
 export PROVIDER_INTERFACE_NAME=wlan0
-
+export METADATA_SECRET=password
 
 
