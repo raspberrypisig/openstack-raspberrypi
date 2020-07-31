@@ -5,9 +5,11 @@ set -x
 SSID=mycrib
 PSK=peachspeak38
 CONTROLLER="$CONTROLLER_MANAGEMENT_IP"
+COMPUTE="$COMPUTE_MANAGEMENT_IP"
 
 cat<<EOF >> /etc/hosts
 $CONTROLLER controller
+$COMPUTE compute
 EOF
 
 wpa_passphrase $SSID $PSK > /etc/wpa_supplicant.conf
