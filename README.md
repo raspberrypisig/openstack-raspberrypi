@@ -1,3 +1,7 @@
 # openstack-raspberrypi
 
-Testing on Raspberry Pi 4 4GB with a 8GB swap file (installing controller node)
+Install scripts here.
+
+Following steps in:
+
+https://docs.openstack.org/install-guide/
