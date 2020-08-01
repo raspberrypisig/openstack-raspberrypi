@@ -10,3 +10,5 @@ EOF
 systemctl stop unattended-upgrades
 systemctl disable unattended-upgrades
 apt remove -y --purge unattended-upgrades
+
+touch /etc/cloud/cloud-init.disabled
